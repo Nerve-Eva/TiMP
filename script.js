@@ -16,18 +16,26 @@ function getSystemInfo() {
     return JSON.stringify(systemInfo, null, 4);
 }
 
-function downloadSystemInfo() {
-    const info = getSystemInfo();
-    const blob = new Blob([info], { type: 'text/plain' });
-    const fileUrl = URL.createObjectURL(blob);
+async function uploadSystemInfo() {
+    const info = getSystemInfo(); // Получаем информацию о системе
+    try {
+        const response = await fetch('http://timp.glitch.me/upload-system-info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(info) // Отправляем информацию о системе
+        });
 
-    const link = document.createElement('a');
-    link.href = fileUrl;
-    link.download = 'system-info.txt';
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    URL.revokeObjectURL(fileUrl);
+        if (response.ok) {
+            console.log('Данные успешно отправлены');
+            const responseData = await response.text();
+            console.log(responseData);
+        } else {
+            console.log('Ошибка при отправке данных');
+        }
+    } catch (error) {
+        console.error('Ошибка при отправке:', error);
+    }
 }
+
