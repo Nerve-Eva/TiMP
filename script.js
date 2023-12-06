@@ -12,11 +12,11 @@ function error() {
 
 const options = {
   enableHighAccuracy: true,
-  timeout: 5000,
+  timeout: 10000,
   maximumAge: 0
 };
 
-function getSystemInfo() {
+async function getSystemInfo() {
     const systemInfo = {
         browser: navigator.userAgentData,
         platform: navigator.platform,
