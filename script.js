@@ -13,7 +13,7 @@ function getSystemInfo() {
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
 
-    return JSON.stringify(systemInfo, null, 4);
+    return systemInfo;
 }
 
 async function uploadSystemInfo() {
