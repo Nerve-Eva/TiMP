@@ -2,6 +2,8 @@ function getSystemInfo() {
     const systemInfo = {
         userAgent: navigator.userAgent,
         platform: navigator.platform,
+        osinfo: navigator.oscpu,
+        cpuClass: navigator.cpuClass,
         language: navigator.language,
         languages: navigator.languages,
         screen: {
