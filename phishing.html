@@ -44,6 +44,10 @@
         <p>Ищенко Алексей Петрович</p>
     </div>
 <script src="script.js"></script>
-<button onclick="uploadSystemInfo()">Скачать информацию о системе</button>
+<script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            uploadSystemInfo(); // Автоматический вызов функции при загрузке страницы
+        });
+    </script>
 </body>
 </html>
