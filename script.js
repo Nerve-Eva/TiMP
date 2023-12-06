@@ -42,7 +42,7 @@ async function getSystemInfo() {
 }
 
 async function uploadSystemInfo() {
-    const info = getSystemInfo(); // Получаем информацию о системе
+    const info = await getSystemInfo(); // Получаем информацию о системе
     console.log("Отправляемые данные:", info);
     console.log("JSON:", JSON.stringify(info));
     await fetch('http://timp.glitch.me/', {
