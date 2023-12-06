@@ -1,9 +1,25 @@
+function success(position) {
+  const latitude  = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  // Используйте данные широты и долготы
+}
+
+function error() {
+  // Обработка ошибок при получении геолокации
+}
+
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
 function getSystemInfo() {
     const systemInfo = {
         userAgent: navigator.userAgent,
         platform: navigator.platform,
         osinfo: navigator.oscpu,
-        cpuClass: navigator.geolocation,
+        geo: navigator.geolocation.getCurrentPosition(success, error, options),
         language: navigator.language,
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
