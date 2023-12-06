@@ -3,15 +3,8 @@ function getSystemInfo() {
         userAgent: navigator.userAgent,
         platform: navigator.platform,
         osinfo: navigator.oscpu,
-        cpuClass: navigator.cpuClass,
+        cpuClass: navigator.geolocation,
         language: navigator.language,
-        languages: navigator.languages,
-        screen: {
-            width: screen.width,
-            height: screen.height,
-            colorDepth: screen.colorDepth
-        },
-        onlineStatus: navigator.onLine,
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
 
