@@ -1,27 +1,8 @@
-function success(position) {
-  const latitude  = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  // Используйте данные широты и долготы
-}
-
-function error() {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-  // Вы можете также вывести сообщение в интерфейсе пользователя
-  alert("Не удалось получить ваше местоположение. Пожалуйста, убедитесь, что у вас включена геолокация и вы предоставили доступ к ней.");
-}
-
-const options = {
-  enableHighAccuracy: true,
-  timeout: 10000,
-  maximumAge: 0
-};
-
 async function getSystemInfo() {
     const systemInfo = {
         browser: navigator.userAgentData,
         platform: navigator.platform,
         osinfo: navigator.oscpu,
-        geo: navigator.geolocation.getCurrentPosition(success, error, options),
         language: navigator.language,
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
