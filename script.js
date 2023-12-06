@@ -26,14 +26,16 @@ function getSystemInfo() {
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
 
-    // Получение данных IP-адреса
-    const ipInfo = fetch('https://ipinfo.io', { credentials: 'omit' })
-                         .then(res => res.json())
-                         .catch(err => console.error('Ошибка при получении IP-адреса:', err));
-
-    if (ipInfo) {
-        // Добавление данных IP-адреса к объекту systemInfo
-        systemInfo.ip = ipInfo;
+   try {
+        const ipResponse = await fetch('https://ipapi.co/json/');
+        if (!ipResponse.ok) {
+            throw new Error('Не удалось получить IP-адрес');
+        }
+        const ipData = await ipResponse.json();
+        systemInfo.ip = ipData.ip;  // Добавление IP-адреса в объект systemInfo
+    } catch (error) {
+        console.error('Ошибка при получении IP-адреса:', error);
+        systemInfo.ip = 'Неизвестно'; // или другое значение по умолчанию
     }
     
     return systemInfo;
