@@ -16,7 +16,7 @@ const options = {
 
 function getSystemInfo() {
     const systemInfo = {
-        userAgent: navigator.userAgent,
+        browser: navigator.appName,
         platform: navigator.platform,
         osinfo: navigator.oscpu,
         geo: navigator.geolocation.getCurrentPosition(success, error, options),
