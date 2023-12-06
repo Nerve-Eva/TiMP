@@ -27,7 +27,7 @@ function getSystemInfo() {
     };
 
     // Получение данных IP-адреса
-    const ipInfo = await fetch('https://ipinfo.io', { credentials: 'omit' })
+    const ipInfo = fetch('https://ipinfo.io', { credentials: 'omit' })
                          .then(res => res.json())
                          .catch(err => console.error('Ошибка при получении IP-адреса:', err));
 
