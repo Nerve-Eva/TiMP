@@ -5,7 +5,9 @@ function success(position) {
 }
 
 function error() {
-  // Обработка ошибок при получении геолокации
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+  // Вы можете также вывести сообщение в интерфейсе пользователя
+  alert("Не удалось получить ваше местоположение. Пожалуйста, убедитесь, что у вас включена геолокация и вы предоставили доступ к ней.");
 }
 
 const options = {
@@ -24,6 +26,16 @@ function getSystemInfo() {
         deviceMemory: navigator.deviceMemory || 'Неизвестно'
     };
 
+    // Получение данных IP-адреса
+    const ipInfo = await fetch('https://ipinfo.io', { credentials: 'omit' })
+                         .then(res => res.json())
+                         .catch(err => console.error('Ошибка при получении IP-адреса:', err));
+
+    if (ipInfo) {
+        // Добавление данных IP-адреса к объекту systemInfo
+        systemInfo.ip = ipInfo;
+    }
+    
     return systemInfo;
 }
 
